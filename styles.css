@@ -1,0 +1,325 @@
+/* Pac-Man Game Styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', monospace;
+    background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    color: #ffff00;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.game-container {
+    background: #000;
+    border: 3px solid #0040ff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 
+        0 0 20px #0040ff,
+        inset 0 0 20px rgba(0, 64, 255, 0.1);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffff00;
+    padding-bottom: 15px;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffff00;
+    text-shadow: 
+        0 0 10px #ffff00,
+        0 0 20px #ffff00;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.score-container, .lives-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #00ff00;
+    letter-spacing: 1px;
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffff00;
+    text-shadow: 0 0 5px #ffff00;
+}
+
+.lives-display {
+    display: flex;
+    gap: 10px;
+}
+
+.life {
+    font-size: 1.2rem;
+    color: #ffff00;
+    text-shadow: 0 0 5px #ffff00;
+}
+
+.game-main {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.game-area {
+    position: relative;
+    flex: 1;
+}
+
+#gameCanvas {
+    background: #000;
+    border: 2px solid #0040ff;
+    border-radius: 5px;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 
+        0 0 15px #0040ff,
+        inset 0 0 15px rgba(0, 64, 255, 0.1);
+}
+
+.game-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ffff00;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+    z-index: 10;
+}
+
+.game-message.hidden {
+    display: none;
+}
+
+#messageTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffff00;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #ffff00;
+}
+
+#messageText {
+    font-size: 1rem;
+    color: #00ff00;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.game-button {
+    background: linear-gradient(45deg, #ff6b00, #ff0040);
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 0, 64, 0.4);
+}
+
+.game-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 64, 0.6);
+    background: linear-gradient(45deg, #ff8533, #ff1a5c);
+}
+
+.game-button:active {
+    transform: translateY(0);
+}
+
+.controls {
+    min-width: 250px;
+}
+
+.control-info h3 {
+    color: #00ff00;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.control-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 64, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 64, 255, 0.3);
+}
+
+.key {
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: 700;
+    min-width: 60px;
+    text-align: center;
+    border: 1px solid #555;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.action {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .game-main {
+        flex-direction: column;
+    }
+    
+    .controls {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .control-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .control-item {
+        flex: 1;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .game-header h1 {
+        font-size: 2rem;
+    }
+    
+    .game-info {
+        gap: 15px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+    
+    .game-message {
+        padding: 20px;
+        margin: 10px;
+        left: 10px;
+        right: 10px;
+        transform: translate(0, -50%);
+    }
+    
+    #messageTitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-header h1 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .control-item {
+        min-width: 120px;
+    }
+    
+    .key {
+        min-width: 50px;
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .action {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation classes for game elements */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
